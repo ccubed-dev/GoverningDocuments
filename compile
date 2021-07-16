@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+	echo "No file given. The options are:"
+	for f in documents/*.md; do
+		printf '* %s\n' "$(basename ${f%.md})"
+	done
+else
+	cd latex
+	pandoc -s ../documents/$1.md -o ../_build/$1.pdf --toc --number-sections --template=ccubed.tex --pdf-engine=lualatex
+fi
