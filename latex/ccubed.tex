@@ -1,0 +1,25 @@
+\documentclass[titlepage]{article}
+\usepackage{ccubed}
+
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+\date{$date$}
+
+\begin{document}
+\maketitle
+
+$if(toc)$
+\tableofcontents
+\newpage
+\mainmatter
+$endif$
+
+$body$
+\end{document}

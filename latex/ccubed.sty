@@ -1,0 +1,108 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ccubed}
+\RequirePackage{geometry}
+\geometry{letterpaper, left=6pc, right=6pc, top=6pc, bottom=6pc, footskip=2pc}
+
+\RequirePackage{fontspec}
+\RequirePackage[english]{babel}
+\RequirePackage{comment}
+
+\let\tightlist\relax
+
+\renewcommand{\labelenumi}{\Roman{enumi}.}
+
+\RequirePackage{tikz}
+\usetikzlibrary{positioning, calc}
+\RequirePackage{xcolor}
+\definecolor{aeroblue}{RGB}{198, 227, 210}
+\definecolor{maxbluegreen}{RGB}{51, 186, 197}
+\definecolor{metallicseaweed}{RGB}{30, 136, 150}
+\definecolor{prussianblue}{RGB}{26, 56, 76}
+\definecolor{orangesoda}{RGB}{234, 81, 51}
+\definecolor{yelloworange}{RGB}{247, 171, 59}
+\definecolor{titlegrey}{RGB}{64, 64, 64}
+\definecolor{dategrey}{RGB}{96, 96, 96}
+
+\RequirePackage{eso-pic}
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture, overlay]
+\draw[draw=prussianblue, line width=15pt] (current page.north west) -- (current page.north east);
+\draw[draw=prussianblue, line width=64.5pt] (current page.south west) -- (current page.south east);
+\end{tikzpicture}%
+}
+
+\RequirePackage{moresize}
+\RequirePackage{titlesec}
+\RequirePackage{parskip}
+
+\titleformat*{\section}{\fontsize{18}{22}\selectfont\color{yelloworange}}
+\titleformat*{\subsection}{\fontsize{14}{18}\selectfont\color{maxbluegreen}}
+
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\@subtitle{}
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{6pt}
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+	\color{prussianblue}\hrule\@height\headrulewidth\@width 3pc \vskip-\headrulewidth}}
+
+\setmainfont{Montserrat}
+
+\renewcommand{\maketitle}{
+\frontmatter
+\begin{titlepage}
+
+\vspace*{4pc}
+
+\begin{center}
+\begin{tikzpicture}[y=0.12pt, x=0.12pt, yscale=-1, xscale=1, inner sep=0pt, outer sep=0pt]
+    \path[fill=prussianblue] (671.8700,74.9900) -- (547.3900,0.0000) -- (0.0000,307.2700) --
+      (510.2900,612.7700) -- (1052.8800,307.2700) -- (930.9800,231.0900) --
+      (510.2900,467.6200) -- (252.6700,310.6900) -- (671.8700,74.9900) -- cycle;
+    \path[fill=yelloworange] (510.2900,612.7700) -- (510.2900,1245.5900) -- (1054.3300,941.1300) --
+      (1052.8800,796.9800) -- (636.6600,1031.0000) -- (636.6600,687.2600) --
+      (1052.8800,453.2400) -- (1052.8800,307.2700) -- (510.2900,612.7700) -- cycle;
+    \path[fill=maxbluegreen] (0.0000,307.2700) -- (0.2500,938.5600) -- (510.2900,1245.5900) --
+      (510.2900,1098.2700) -- (126.6200,867.1600) -- (126.6200,529.8200) --
+      (510.2900,760.9300) -- (510.2900,612.7700) -- (0.0000,307.2700) -- cycle;
+\end{tikzpicture}
+\end{center}
+
+\vspace*{3pc}
+
+{\centering\color{titlegrey}\fontsize{48}{72}\bfseries\selectfont \@title}
+
+{\centering\color{yelloworange}\fontsize{24}{36}\selectfont \@subtitle}
+
+\vspace*{1pc}
+
+{\color{prussianblue}\rule{3pc}{6pt}}
+
+\vfill
+
+{\fontsize{16}{20}\selectfont \@author}
+
+{\color{dategrey}\fontsize{16}{20}\selectfont \@date}
+\vfill
+\end{titlepage}
+\setcounter{page}{2}}
+
+\RequirePackage{hyperref}
+\hypersetup{
+	bookmarks=true,
+	hidelinks=true,
+}
+
+\newif\if@mainmatter \@mainmattertrue
+\newcommand\frontmatter{%
+		\cleardoublepage
+	\@mainmatterfalse
+	\pagenumbering{roman}}
+\newcommand\mainmatter{%
+		\cleardoublepage
+	\@mainmattertrue
+	\pagenumbering{arabic}}
