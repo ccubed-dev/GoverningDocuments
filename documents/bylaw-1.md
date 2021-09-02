@@ -77,7 +77,7 @@ Deeds, transfers, assignments, contracts, obligations and other instruments in w
 
 ### Financial Year End
 
-The financial year end of the Corporation shall be September 1st.
+The financial year end of the Corporation shall be May 31st.
 
 ### Banking Arrangements
 
